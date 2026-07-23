@@ -2015,4 +2015,122 @@
 
 </body>
 </html>
-    
+    /* 모바일 전체 레이아웃 /
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  / 헤더 /
+  header {
+    width: 100%;
+    height: 64px;
+    padding: 0 18px;
+    box-sizing: border-box;
+  }
+
+  / PC 메뉴 숨기기 /
+  .desktop-menu,
+  .gnb {
+    display: none;
+  }
+
+  / 모바일 메뉴는 기본 숨김 /
+  .mobile-menu {
+    position: fixed;
+    top: 64px;
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 64px);
+    background: #ffffff;
+    z-index: 9999;
+    transition: right 0.3s ease;
+    padding: 30px 24px;
+    box-sizing: border-box;
+  }
+
+  .mobile-menu.active {
+    right: 0;
+  }
+
+  .mobile-menu a {
+    display: block;
+    color: #222;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+    text-decoration: none;
+  }
+
+  / 메인 배너 /
+  .hero,
+  .main-visual,
+  .visual {
+    width: 100%;
+    min-height: auto;
+    display: block;
+    padding: 24px 18px;
+    box-sizing: border-box;
+  }
+
+  .hero-inner,
+  .visual-inner {
+    width: 100%;
+    display: block;
+  }
+
+  .hero-text,
+  .visual-text {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .hero-image,
+  .visual-image {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .hero-image img,
+  .visual-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  / 상품 카드 /
+  .product-list,
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .product-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  / 필요 없는 큰 여백 제거 */
+  section {
+    width: 100%;
+    overflow: hidden;
+  }
+}
