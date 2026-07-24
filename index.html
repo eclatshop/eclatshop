@@ -2,648 +2,231 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-  >
-
-  <title>éclatview PICK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>에끌라뷰</title>
 
   <style>
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      background: #f7f3eb;
+      background: #f4f4f4;
       color: #222;
-      font-family:
-        Arial,
-        "Apple SD Gothic Neo",
-        "Noto Sans KR",
-        sans-serif;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-    }
-
-    button {
-      font: inherit;
+      font-family: Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
     }
 
     .page {
       width: 100%;
+      max-width: 650px;
       min-height: 100vh;
-    }
-
-    /* 상단 헤더 */
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid #eee7dc;
-      backdrop-filter: blur(10px);
-    }
-
-    .header-inner {
-      width: min(1180px, 100%);
-      height: 72px;
       margin: 0 auto;
-      padding: 0 24px;
+      background: white;
+    }
+
+    .profile {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 18px;
+      padding: 35px 28px;
+      border-bottom: 1px solid #eeeeee;
     }
 
-    .logo {
-      display: inline-flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .logo-main {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 25px;
-      letter-spacing: -1px;
-    }
-
-    .logo-sub {
-      margin-top: 6px;
-      text-align: center;
-      font-size: 8px;
-      letter-spacing: 4px;
-    }
-
-    .top-menu {
+    .profile-photo {
+      width: 95px;
+      height: 95px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border-radius: 50%;
+      background: #f1e7e7;
       display: flex;
-      align-items: center;
-      gap: 38px;
-    }
-
-    .top-menu a {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .top-menu a:hover {
-      opacity: 0.55;
-    }
-
-    .search-link {
-      width: 42px;
-      height: 42px;
-      border: 0;
-      border-radius: 50%;
-      background: transparent;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-    }
-
-    .search-icon {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #222;
-      border-radius: 50%;
-      position: relative;
-    }
-
-    .search-icon::after {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 2px;
-      right: -6px;
-      bottom: -3px;
-      background: #222;
-      transform: rotate(45deg);
-      border-radius: 10px;
-    }
-
-    /* 공통 버튼 */
-
-    .button {
-      min-height: 48px;
-      padding: 0 22px;
-      border-radius: 8px;
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      background: #25140e;
-      color: white;
-      font-size: 14px;
-      font-weight: 700;
-      transition: transform 0.2s ease;
+      font-size: 38px;
+      color: #a88383;
     }
 
-    .button:active {
-      transform: scale(0.97);
-    }
-
-    .section {
-      width: min(1180px, 100%);
-      margin: 0 auto;
-      padding: 70px 24px;
-    }
-
-    .section-title {
-      margin: 0;
-      font-size: 30px;
-      letter-spacing: -1.5px;
-    }
-
-    .section-description {
-      margin: 10px 0 0;
-      color: #777;
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    /* 모바일 */
-
-    @media (max-width: 768px) {
-      .header-inner {
-        height: 62px;
-        padding: 0 17px;
-      }
-
-      .logo-main {
-        font-size: 21px;
-      }
-
-      .logo-sub {
-        margin-top: 4px;
-        font-size: 7px;
-        letter-spacing: 3px;
-      }
-
-      .top-menu {
-        gap: 18px;
-      }
-
-      .top-menu a {
-        font-size: 12px;
-      }
-
-      .search-link {
-        width: 34px;
-        height: 34px;
-      }
-
-      .section {
-        padding: 46px 16px;
-      }
-
-      .section-title {
-        font-size: 25px;
-      }
-
-      .section-description {
-        font-size: 14px;
-      }
-    }
-
-    @media (max-width: 390px) {
-      .top-menu {
-        gap: 13px;
-      }
-
-      .top-menu a {
-        font-size: 11px;
-      }
-    }
-      /* 메인 배너 */
-
-    .hero {
+    .profile-photo img {
       width: 100%;
-      background: #efe7dc;
-    }
-
-    .hero-inner {
-      width: min(1180px, 100%);
-      min-height: 540px;
-      margin: 0 auto;
-      padding: 54px 24px;
-      display: grid;
-      grid-template-columns: 1fr 1.08fr;
-      align-items: center;
-      gap: 46px;
-    }
-
-    .hero-text {
-      min-width: 0;
-    }
-
-    .hero-label {
-      display: inline-block;
-      margin-bottom: 18px;
-      color: #8a6d5b;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1.6px;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(42px, 5vw, 68px);
-      line-height: 1.08;
-      letter-spacing: -3px;
-    }
-
-    .hero p {
-      max-width: 480px;
-      margin: 24px 0 30px;
-      color: #625b55;
-      font-size: 17px;
-      line-height: 1.8;
-    }
-
-    .hero-image-wrap {
-      width: 100%;
-      overflow: hidden;
-      border-radius: 22px;
-      box-shadow: 0 18px 45px rgba(66, 45, 34, 0.14);
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 430px;
+      height: 100%;
       object-fit: cover;
     }
 
-    /* 카테고리 */
+    .profile-text h1 {
+      margin: 0 0 10px;
+      font-size: 25px;
+    }
 
-    .category-section {
+    .profile-text p {
+      margin: 0;
+      color: #777;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: 78px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .menu div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 27px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: white;
+    }
+
+    .product {
+      position: relative;
       width: 100%;
-      background: #fff;
-      border-bottom: 1px solid #eee9e1;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #f2f2f2;
     }
 
-    .category-scroll {
-      width: min(1180px, 100%);
-      margin: 0 auto;
-      padding: 24px;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-
-    .category-item {
-      min-width: 0;
-      padding: 18px 12px;
-      border: 1px solid #eee6dc;
-      border-radius: 14px;
-      background: #fff;
-      text-align: center;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .category-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(55, 40, 30, 0.08);
-    }
-
-    .category-icon {
-      width: 58px;
-      height: 58px;
-      margin: 0 auto 10px;
-      border-radius: 50%;
-      background: #f3ede5;
-      display: grid;
-      place-items: center;
-      color: #715747;
-      font-size: 10px;
-      font-weight: 800;
-    }
-
-    .category-item strong {
+    .product img {
+      width: 100%;
+      height: 100%;
       display: block;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+    }
+
+    .product:hover img {
+      transform: scale(1.03);
+    }
+
+    footer {
+      margin-top: 80px;
+      padding: 25px 10px;
+      background: #f6f6f6;
+      color: #bbbbbb;
+      text-align: center;
       font-size: 13px;
     }
 
-    @media (max-width: 768px) {
-      .hero-inner {
-        min-height: auto;
-        padding: 22px 16px 26px;
-        grid-template-columns: 1fr;
-        gap: 22px;
+    @media (max-width: 480px) {
+      .profile {
+        padding: 28px 20px;
+        gap: 15px;
       }
 
-      .hero-image-wrap {
-        order: 1;
-        border-radius: 16px;
+      .profile-photo {
+        width: 82px;
+        height: 82px;
       }
 
-      .hero-text {
-        order: 2;
+      .profile-text h1 {
+        font-size: 22px;
       }
 
-      .hero-image {
-        height: 260px;
-      }
-
-      .hero-label {
-        margin-bottom: 11px;
-        font-size: 10px;
-      }
-
-      .hero h1 {
-        font-size: 34px;
-        line-height: 1.15;
-        letter-spacing: -2px;
-      }
-
-      .hero p {
-        margin: 15px 0 21px;
+      .profile-text p {
         font-size: 14px;
-        line-height: 1.7;
       }
 
-      .button {
-        width: 100%;
-      }
-
-      .category-scroll {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-        padding: 17px 16px;
-        scrollbar-width: none;
-      }
-
-      .category-scroll::-webkit-scrollbar {
-        display: none;
-      }
-
-      .category-item {
-        flex: 0 0 92px;
-        padding: 14px 8px;
-      }
-
-      .category-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 9px;
-      }
-
-      .category-item strong {
-        font-size: 12px;
+      .menu {
+        height: 65px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="page">
+  <main class="page">
 
-    <header class="header">
-      <div class="header-inner">
-
-        <a href="#" class="logo">
-          <span class="logo-main">éclatview</span>
-          <span class="logo-sub">PICK</span>
-        </a>
-
-        <nav class="top-menu">
-          <a href="#best">BEST</a>
-          <a href="#shop">SHOP</a>
-
-          <a href="#shop" class="search-link" aria-label="상품 보기">
-            <span class="search-icon"></span>
-          </a>
-        </nav>
-
-      </div>
-    </header>
-    <main>
-
-      <!-- 메인 배너 -->
-      <section class="hero">
-        <div class="hero-inner">
-
-          <div class="hero-text">
-            <span class="hero-label">ÉCLATVIEW BEAUTY PICK</span>
-
-            <h1>
-              매일 쓰기 좋은<br>
-              뷰티 아이템만 골랐어요
-            </h1>
-
-            <p>
-              직접 비교하고 고른 인기 뷰티 제품을
-              한눈에 확인해보세요.
-            </p>
-
-            <a href="#best" class="button">
-              BEST 상품 보기
-            </a>
-          </div>
-
-          <div class="hero-image-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=85"
-              alt="뷰티 제품"
-              class="hero-image"
-            >
-          </div>
-
-        </div>
-      </section>
-
-      <!-- 카테고리 메뉴 -->
-      <section class="category-section">
-        <div class="category-scroll">
-
-          <a href="#best" class="category-item">
-            <span class="category-icon">BEST</span>
-            <strong>베스트</strong>
-          </a>
-
-          <a href="#skin" class="category-item">
-            <span class="category-icon">SKIN</span>
-            <strong>스킨케어</strong>
-          </a>
-
-          <a href="#makeup" class="category-item">
-            <span class="category-icon">MAKEUP</span>
-            <strong>메이크업</strong>
-          </a>
-
-          <a href="#body" class="category-item">
-            <span class="category-icon">BODY</span>
-            <strong>바디케어</strong>
-          </a>
-
-          <a href="#shop" class="category-item">
-            <span class="category-icon">SHOP</span>
-            <strong>전체보기</strong>
-          </a>
-
-        </div>
-      </section>
-      <!-- BEST 상품 -->
-      <section class="section" id="best">
-
-        <h2 class="section-title">
-          BEST PICK
-        </h2>
-
-        <p class="section-description">
-          지금 가장 인기 있는 뷰티 아이템
-        </p>
-
-        <div class="product-grid">
-
-<div class="product-grid">
-
-  <a class="product-card"
-     href="https://link.coupang.com/a/fCsZ0qfgCi"
-     target="_blank">
-    <img src="images/1.jpg"
-         alt="헤라 블랙 쿠션">
-    <h3>헤라 블랙 쿠션 파운데이션 듀오</h3>
-    <span>쿠팡에서 보기 →</span>
-  </a>
-
-  <a class="product-card"
-     href="https://link.coupang.com/a/fCtMszlcaa"
-     target="_blank">
-    <img src="images/2.jpg"
-         alt="미샤 비타씨플러스 앰플">
-    <h3>미샤 비타씨플러스 잡티씨 탄력앰플</h3>
-    <span>쿠팡에서 보기 →</span>
-  </a>
-
-  <a class="product-card"
-     href="https://link.coupang.com/a/fCtIRa3P3I"
-     target="_blank">
-    <img src="images/3.jpg"
-         alt="아임미미 멀티스틱 쉐딩">
-    <h3>아임미미 아임 멀티스틱 쉐딩</h3>
-    <span>쿠팡에서 보기 →</span>
-  </a>
-
-  <a class="product-card"
-     href="https://link.coupang.com/a/fCtGszkiQ0"
-     target="_blank">
-    <img src="images/4.jpg"
-         alt="이니스프리 화산송이 클렌징 폼">
-    <h3>이니스프리 화산송이 모공 바하 클렌징 폼</h3>
-    <span>쿠팡에서 보기 →</span>
-  </a>
-
-  <a class="product-card"
-     href="https://link.coupang.com/a/fCtEnHIQG4"
-     target="_blank">
-    <img src="images/5.jpg"
-         alt="롬앤 베러 댄 팔레트">
-    <h3>롬앤 베러 댄 팔레트</h3>
-    <span>쿠팡에서 보기 →</span>
-  </a>
-
-  <a class="product-card"
-     href="https://link.coupang.com/a/fCtABnQYq4"
-     target="_blank">
-    <img src="images/6.jpg"
-         alt="AHC 아쿠아 리치 선크림">
-    <h3>AHC 마스터즈 아쿠아 리치 선크림</h3>
-    <span>쿠팡에서 보기 →</span>
-  </a>
-
-  <a class="product-card"
-     href="https://link.coupang.com/a/fCtwofiDIa"
-     target="_blank">
-    <img src="images/7.jpg"
-         alt="이니스프리 납작 아이브로우 펜슬">
-    <h3>이니스프리 납작 아이브로우 펜슬</h3>
-    <span>쿠팡에서 보기 →</span>
-  </a>
-
-  <a class="product-card"
-     href="https://link.coupang.com/a/fCtqQRmHme"
-     target="_blank">
-    <img src="images/8.jpg"
-         alt="토니모리 퍼펙트립스 쇼킹립">
-    <h3>토니모리 퍼펙트립스 쇼킹립</h3>
-    <span>쿠팡에서 보기 →</span>
-  </a>
-
-  <a class="product-card"
-     href="https://link.coupang.com/a/fCtneRJ1Ai"
-     target="_blank">
-    <img src="images/9.jpg"
-         alt="롬앤 더 쥬시 래스팅 틴트">
-    <h3>롬앤 더 쥬시 래스팅 틴트</h3>
-    <span>쿠팡에서 보기 →</span>
-  </a>
-
-</div>
-       
-      </section>
-      <!-- SHOP -->
-      <section class="section" id="shop">
-
-        <h2 class="section-title">
-          SHOP
-        </h2>
-
-        <p class="section-description">
-          아래 버튼을 누르면 쿠팡에서 바로 상품을 확인할 수 있습니다.
-        </p>
-
-        <div class="shop-box">
-
-          <a
-            href="https://link.coupang.com/a/fCsZ0qfgCi" 
-            target="_blank"
-            class="button"
-          >
-            쿠팡에서 상품 보러가기
-          </a>
-
-        </div>
-
-      </section>
-
-    </main>
-
-    <footer class="footer">
-
-      <div class="footer-inner">
-
-        <div class="footer-logo">
-          éclatview PICK
-        </div>
-
-        <p>
-          © 2026 éclatview PICK<br>
-          All Rights Reserved.
-        </p>
-
+    <section class="profile">
+      <div class="profile-photo">
+        E
       </div>
 
+      <div class="profile-text">
+        <h1>에끌라뷰</h1>
+        <p>✨ Beauty Select Shop<br>나를 위한 가장 예쁜 선택 🤍</p>
+      </div>
+    </section>
+
+    <section class="menu">
+      <div>↗</div>
+      <div>◎</div>
+      <div>⌕</div>
+    </section>
+
+    <section class="products">
+
+      <a class="product" href="#" target="_blank">
+        <img src="images/1.jpg" alt="상품 1" onerror="changeImage(this, 1)">
+      </a>
+
+      <a class="product" href="#" target="_blank">
+        <img src="images/2.jpg" alt="상품 2" onerror="changeImage(this, 2)">
+      </a>
+
+      <a class="product" href="#" target="_blank">
+        <img src="images/3.jpg" alt="상품 3" onerror="changeImage(this, 3)">
+      </a>
+
+      <a class="product" href="#" target="_blank">
+        <img src="images/4.jpg" alt="상품 4" onerror="changeImage(this, 4)">
+      </a>
+
+      <a class="product" href="#" target="_blank">
+        <img src="images/5.jpg" alt="상품 5" onerror="changeImage(this, 5)">
+      </a>
+
+      <a class="product" href="#" target="_blank">
+        <img src="images/6.jpg" alt="상품 6" onerror="changeImage(this, 6)">
+      </a>
+
+      <a class="product" href="#" target="_blank">
+        <img src="images/7.jpg" alt="상품 7" onerror="changeImage(this, 7)">
+      </a>
+
+      <a class="product" href="#" target="_blank">
+        <img src="images/8.jpg" alt="상품 8" onerror="changeImage(this, 8)">
+      </a>
+
+      <a class="product" href="#" target="_blank">
+        <img src="images/9.jpg" alt="상품 9" onerror="changeImage(this, 9)">
+      </a>
+
+    </section>
+
+    <footer>
+      ECLATVIEW Beauty Select Shop
     </footer>
-</div>
 
+  </main>
+
+  <script>
+    const imageExtensions = ["png", "jpeg", "webp"];
+    const imageAttempts = {};
+
+    function changeImage(image, number) {
+      imageAttempts[number] = imageAttempts[number] || 0;
+
+      if (imageAttempts[number] < imageExtensions.length) {
+        image.src =
+          "images/" +
+          number +
+          "." +
+          imageExtensions[imageAttempts[number]];
+
+        imageAttempts[number]++;
+      } else {
+        image.onerror = null;
+      }
+    }
+  </script>
 </body>
 </html>
