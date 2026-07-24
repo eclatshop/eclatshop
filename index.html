@@ -22,7 +22,7 @@
       max-width: 650px;
       min-height: 100vh;
       margin: 0 auto;
-      background: white;
+      background: #ffffff;
     }
 
     .profile {
@@ -44,13 +44,8 @@
       align-items: center;
       justify-content: center;
       font-size: 38px;
+      font-weight: bold;
       color: #a88383;
-    }
-
-    .profile-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
     .profile-text h1 {
@@ -60,7 +55,7 @@
 
     .profile-text p {
       margin: 0;
-      color: #777;
+      color: #777777;
       font-size: 16px;
       line-height: 1.6;
     }
@@ -68,7 +63,7 @@
     .menu {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      height: 78px;
+      height: 70px;
       border-bottom: 1px solid #eeeeee;
     }
 
@@ -76,19 +71,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #999;
-      font-size: 27px;
+      color: #999999;
+      font-size: 25px;
     }
 
     .products {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
-      background: white;
+      background: #ffffff;
     }
 
     .product {
       position: relative;
+      display: block;
       width: 100%;
       aspect-ratio: 1 / 1;
       overflow: hidden;
@@ -108,7 +104,7 @@
     }
 
     footer {
-      margin-top: 80px;
+      margin-top: 70px;
       padding: 25px 10px;
       background: #f6f6f6;
       color: #bbbbbb;
@@ -136,7 +132,7 @@
       }
 
       .menu {
-        height: 65px;
+        height: 62px;
       }
     }
   </style>
@@ -146,13 +142,14 @@
   <main class="page">
 
     <section class="profile">
-      <div class="profile-photo">
-        E
-      </div>
+      <div class="profile-photo">E</div>
 
       <div class="profile-text">
         <h1>에끌라뷰</h1>
-        <p>✨ Beauty Select Shop<br>나를 위한 가장 예쁜 선택 🤍</p>
+        <p>
+          ✨ Beauty Select Shop<br>
+          나를 위한 가장 예쁜 선택 🤍
+        </p>
       </div>
     </section>
 
@@ -164,39 +161,66 @@
 
     <section class="products">
 
-      <a class="product" href="#" target="_blank">
+      <a class="product"
+         href="https://link.coupang.com/a/fCsZ0qfgCi"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/1.jpg" alt="상품 1" onerror="changeImage(this, 1)">
       </a>
 
-      <a class="product" href="#" target="_blank">
+      <a class="product"
+         href="https://link.coupang.com/a/fCtMszlcaa"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/2.jpg" alt="상품 2" onerror="changeImage(this, 2)">
       </a>
 
-      <a class="product" href="#" target="_blank">
+      <a class="product"
+         href="https://link.coupang.com/a/fCtIRa3P3I"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/3.jpg" alt="상품 3" onerror="changeImage(this, 3)">
       </a>
 
-      <a class="product" href="#" target="_blank">
+      <a class="product"
+         href="https://link.coupang.com/a/fCtGszkiQ0"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/4.jpg" alt="상품 4" onerror="changeImage(this, 4)">
       </a>
 
-      <a class="product" href="#" target="_blank">
+      <a class="product"
+         href="https://link.coupang.com/a/fCtEnHIQG4"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/5.jpg" alt="상품 5" onerror="changeImage(this, 5)">
       </a>
 
-      <a class="product" href="#" target="_blank">
+      <a class="product"
+         href="https://link.coupang.com/a/fCtABnQYq4"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/6.jpg" alt="상품 6" onerror="changeImage(this, 6)">
       </a>
 
-      <a class="product" href="#" target="_blank">
+      <a class="product"
+         href="https://link.coupang.com/a/fCtwofiDIa"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/7.jpg" alt="상품 7" onerror="changeImage(this, 7)">
       </a>
 
-      <a class="product" href="#" target="_blank">
+      <a class="product"
+         href="https://link.coupang.com/a/fCtqQRmHme"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/8.jpg" alt="상품 8" onerror="changeImage(this, 8)">
       </a>
 
-      <a class="product" href="#" target="_blank">
+      <a class="product"
+         href="https://link.coupang.com/a/fCtneRJ1Ai"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="images/9.jpg" alt="상품 9" onerror="changeImage(this, 9)">
       </a>
 
@@ -209,20 +233,15 @@
   </main>
 
   <script>
-    const imageExtensions = ["png", "jpeg", "webp"];
-    const imageAttempts = {};
+    const extensions = ["png", "jpeg", "webp"];
+    const attempts = {};
 
     function changeImage(image, number) {
-      imageAttempts[number] = imageAttempts[number] || 0;
+      attempts[number] = attempts[number] || 0;
 
-      if (imageAttempts[number] < imageExtensions.length) {
-        image.src =
-          "images/" +
-          number +
-          "." +
-          imageExtensions[imageAttempts[number]];
-
-        imageAttempts[number]++;
+      if (attempts[number] < extensions.length) {
+        image.src = "images/" + number + "." + extensions[attempts[number]];
+        attempts[number]++;
       } else {
         image.onerror = null;
       }
